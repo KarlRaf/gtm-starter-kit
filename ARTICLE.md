@@ -60,6 +60,12 @@ One pattern consistent across every high-performing team we've seen: they mainta
 
 **`context/signal-library.md`** — Signals with detection methods, point values, decay curves, and message hooks. Not "recently funded companies." A real signal is: "Series B announced in last 60 days, detected via Crunchbase webhook into Clay, worth 30 points, decay to 15 points after 60 days, message hook: 'Series B is the inflection point where the ops layer either scales or becomes the bottleneck.'"
 
+Two concepts worth understanding before you build your signal library.
+
+*Signal decay.* A funding event from 150 days ago is not the same signal as one from 10 days ago. The repo scores them differently — a Series B at announcement is worth 30 points; at 90 days it's worth 15; at 180 days it's worth 0. This matters because most teams don't decay their signals, which means their "active list" quietly fills with accounts that were relevant six months ago and aren't anymore. Decay forces the list to reflect actual urgency, not historical interest.
+
+*Signal combinations.* Two signals together are more predictive than either alone, and score accordingly. A Series B plus a new RevOps hire in the same week isn't a 65-point account — it's an 80-point account with a combination bonus. The combination tells you something neither signal tells you individually: budget exists AND someone is actively rebuilding. The repo includes a combination table with bonus scoring rules and recommended actions for each pairing.
+
 The signal library is also where performance gets tracked. Which signals are actually generating meetings? Which ones look good in theory but produce no pipeline? A signal library that isn't updated with results is a hypothesis document. Updated with outcomes, it is a learning system.
 
 **`context/positioning.md`** — The source of truth for how you talk about what you do. Value pillars with proof points, a messaging matrix by persona, and a "what not to say" section that prevents Claude from generating copy that sounds good but misrepresents your actual differentiation.
@@ -74,7 +80,7 @@ A skill is a markdown file that tells Claude how to run a specific GTM task usin
 
 **Account Research** — given a domain, produce a full intelligence brief: company snapshot, stakeholder map, signal score, competitive context, and a recommended angle with a specific first-line hook. This is what goes in front of the AE before any Tier 1 conversation.
 
-**Signal to Sequence** — given a signal and target segment, produce a complete campaign: trigger logic, audience definition, full sequence copy across all touches, measurement targets. Ready to load into your outbound tool.
+**Signal to Sequence** — given a signal and target segment, produce a complete campaign: trigger logic, audience definition, full sequence copy across all touches, measurement targets. Ready to load into your outbound tool. Every first touch goes through what the skill calls the PVP gate — Permissionless Value Prop. A message passes PVP if the prospect would find it valuable even if they never buy from you. Remove the CTA. If the message still has value, it passes. If it's pointless without the ask, it's a pitch — rewrite it. This single filter eliminates most of what makes outbound bad.
 
 **ICP Scoring** — given an account or a list, score each one against your ICP definition and assign a tier. Runs on a single account in a minute or a batch of 500 in one session.
 
