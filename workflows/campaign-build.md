@@ -123,6 +123,19 @@ Before launch, every campaign goes through this review:
 
 **Week 6:** Full campaign review. Decision: continue, iterate, or retire.
 
+### Continue / Iterate / Retire Decision Framework
+
+| Situation | Decision | Action |
+|-----------|----------|--------|
+| Reply rate ≥ target, meetings booking | **Continue** | Keep running. Add more accounts to the segment. |
+| Reply rate ≥ target, but no meetings | **Iterate** | Rewrite the CTA and qualification criteria. The message is landing but the ask or fit is wrong. |
+| Reply rate 50–80% of target | **Iterate** | Test a new subject line variant and rewrite touch 1 body. |
+| Reply rate < 50% of target after 6 weeks | **Retire** | Kill the campaign. The signal-persona combination isn't working. Document what you learned in the campaign archive. |
+| Strong week 1–2, then drops off | **Iterate** | The signal hook works but later touches don't. Rewrite touches 3–4. |
+| Signal volume drying up | **Retire** | The signal is seasonal or exhausted. Archive and wait for next cycle. |
+
+When you retire a campaign: write two sentences in the campaign brief on why it didn't work. That note is worth more than the campaign itself.
+
 ---
 
 ## Campaign Performance Benchmarks

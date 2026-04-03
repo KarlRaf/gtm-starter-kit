@@ -1,6 +1,8 @@
 # Persona: [Persona Name]
 
-*Duplicate this file for each buyer persona. Name the file by role, e.g., `vp-sales.md`, `head-of-revops.md`.*
+*Duplicate this file for each buyer persona. Name the file by role, e.g., `vp-sales.md`, `head-of-revops.md`. Aim for 2–4 personas — one per distinct buyer role in your deal.*
+
+*See example: `examples/sample-company/context/personas/head-of-revops.md`*
 
 ---
 

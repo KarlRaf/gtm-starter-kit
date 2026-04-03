@@ -4,6 +4,8 @@
 
 Last updated: [YYYY-MM-DD]
 
+*See example: `examples/sample-company/context/positioning.md`*
+
 ---
 
 ## Core Positioning Statement

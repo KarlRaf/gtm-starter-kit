@@ -4,6 +4,10 @@
 
 Last updated: [YYYY-MM-DD]
 
+**Update cadence:** Update within 24 hours of every competitive win or loss. Full review every 60 days for pattern changes. A battlecard updated after a real deal is worth ten written in a quarterly planning session from memory.
+
+*See example: `examples/sample-company/context/competitor-radar.md`*
+
 ---
 
 ## How to Use This File

@@ -2,6 +2,8 @@
 
 *High-level context about your company, product, and GTM motion. This is the first thing Claude reads when working on anything in this repo.*
 
+*See example: `examples/sample-company/context/profile.md`*
+
 ---
 
 ## The Company

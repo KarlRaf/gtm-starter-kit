@@ -4,6 +4,8 @@
 
 Last updated: [YYYY-MM-DD]
 
+*See example: `examples/sample-company/context/icp-definition.md`*
+
 ---
 
 ## Ideal Customer Profile
@@ -124,7 +126,9 @@ Too small, too early, or missing key signals. Stay on radar but don't activate.
 
 ## ICP Evolution Log
 
-*Track how your ICP has changed over time. This is useful context for scoring model recalibration.*
+*Track how your ICP has changed over time. This is the most valuable artifact in the repo after a year — the log tells you more than the current definition.*
+
+**Review cadence:** Add an entry quarterly. Re-score the full account list after any ICP change to find newly qualified or disqualified accounts.
 
 | Date | Change | Reason |
 |------|--------|--------|

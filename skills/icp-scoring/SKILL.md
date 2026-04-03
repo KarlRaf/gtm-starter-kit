@@ -35,6 +35,19 @@ Score any account against your ICP and assign it to the right tier. Replaces gut
 - Preparing a campaign list — score to determine sequence tier
 - Quarterly pipeline review — re-score all open opportunities
 
+## Re-scoring Cadence
+
+Scores go stale. Set a recurring schedule:
+
+| Segment | Frequency | Why |
+|---------|-----------|-----|
+| Full account list | Quarterly | ICP drift, new signal data |
+| Tier 1 accounts | Monthly | High-value; worth tracking closely |
+| Active pipeline | After each campaign | Campaign results reveal scoring gaps |
+| After ICP change | Immediately | Find newly qualified or disqualified accounts |
+
+After a quarterly re-score, pull the delta: which accounts moved tiers? Accounts that dropped from Tier 1 to Tier 2 need to be removed from AE pipelines. Accounts that moved up need to be activated.
+
 ---
 
 ## Inputs
