@@ -1,0 +1,28 @@
+# Environment
+.env
+.env.*
+*.env
+
+# Credentials and secrets
+credentials.json
+*_credentials.*
+*.pem
+*.key
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Sensitive outputs (never commit raw CRM data or contact lists)
+outputs/lists/
+outputs/raw/
+*.csv
+
+# Sync script live data outputs (contain metrics, not committed)
+outputs/campaigns/**/results-sync.json
+context/signal-performance-sync.json
