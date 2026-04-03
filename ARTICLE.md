@@ -181,4 +181,4 @@ What's included:
 
 ---
 
-*Built by [The Revenue Architects](https://therevenuearchitects.com) — a GTM engineering firm based in San Francisco.*
+*Built by [The Revenue Architects](https://www.the-revenue-architects.com) — a GTM engineering firm based in San Francisco.*
