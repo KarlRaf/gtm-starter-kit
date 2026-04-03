@@ -30,16 +30,20 @@ Instead of filling in 6 context files from blank templates, you provide a domain
 - Buyer personas (job postings, team page, customer titles)
 - Existing signal indicators (hiring patterns, recent news)
 
-**What Claude will ask you (5 questions max):**
-1. ACV range and deal profile
-2. Your #1 anti-ICP — who explicitly wastes your time
-3. Top 3 signals you've observed or want to track
-4. Current week's priorities
-5. Any competitive dynamics not visible publicly
+**What gets marked `[inferred]` — and can be sharpened in the optional refinement pass:**
+- ACV range and deal profile
+- Anti-ICP — who explicitly wastes your time
+- Top 3 signals you've observed or want to track
+- Current week's priorities
+- Competitive dynamics not visible publicly
+
+Claude writes the repo first. No questions upfront. After you see the result, it offers a 3-minute refinement pass (5 questions) to replace inferred fields with your actual data. Skip it and the repo still works.
 
 ---
 
 ## Step 1: Research the Company
+
+**If public data is limited** (bootstrapped company, stealth stage, minimal web presence): use what's available and mark more fields as `[inferred]`. A company with no Crunchbase entry → mark funding stage as `[inferred: bootstrapped or undisclosed]`. No G2 presence → skip competitor reviews, infer from their own positioning language. No case studies → infer personas from job postings and team page only. The repo will be less complete but still usable — the refinement pass in Step 5 exists exactly for this situation.
 
 Given the domain, Claude researches:
 
@@ -81,18 +85,18 @@ Do not write placeholder text — every field should have a real value or a clea
 Write files in this order:
 
 ### 1. `context/profile.md`
-Fill with: company overview from research, product description, deal profile using the ACV answer, reference customers from public case studies.
+Fill with: company overview from research, product description, deal profile inferred from customer base and pricing page (mark as `[inferred]`), reference customers from public case studies.
 
 ### 2. `context/icp-definition.md`
 Fill with:
-- Tier 1: the highest-fit segment you can infer from their positioning + what they told you
+- Tier 1: the highest-fit segment you can infer from their positioning and customer base
 - Tier 2: adjacent segments visible from their customer base
-- Anti-ICP: exactly what they gave you in question 2
-- ICP evolution log: one entry dated today — "Initial definition from setup. Based on public positioning and founder input. Validate against first 90 days of scored accounts."
+- Anti-ICP: infer from their positioning — who do they explicitly not target? Mark as `[inferred]` if not confirmed
+- ICP evolution log: one entry dated today — "Initial definition from setup. Based on public positioning. Validate against first 90 days of scored accounts."
 
 ### 3. `context/signal-library.md`
 Fill with:
-- 3 Tier 1 signals: use what they gave you in question 3, structured with definition, detection method (Clay/LinkedIn/Crunchbase where applicable), point value (calibrate based on signal strength), decay curve, and message hook
+- 3 Tier 1 signals: infer from hiring patterns, funding events, and job postings visible in research. Structure each with definition, detection method (Clay/LinkedIn/Crunchbase where applicable), point value, decay curve, and message hook. Mark as `[inferred]` — these will be replaced in the refinement pass if the user has better ones
 - 2 Tier 2 signals: infer from what you know about the company type — hiring signals, tech stack signals, or intent signals that typically apply to their category
 - Signal combinations: at least 1 combination using the signals above
 - Performance log: empty table with column headers, ready to fill
@@ -123,7 +127,7 @@ Fill with all of the above — ICP summary, top 3 signals, persona table, positi
 
 ---
 
-## Step 4: Present the Summary and Offer Refinement
+## Step 3: Present the Summary and Offer Refinement
 
 After writing all files, show a summary — then offer the refinement pass as optional.
 
@@ -161,7 +165,7 @@ If the user types "refine" (or similar confirmation), proceed to Step 5. Otherwi
 
 ---
 
-## Step 5: Refinement Pass (Optional)
+## Step 4: Refinement Pass (Optional)
 
 Ask exactly these 5 questions in a single message. Do not split them across multiple prompts.
 
