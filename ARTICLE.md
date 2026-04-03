@@ -76,11 +76,13 @@ The signal library is also where performance gets tracked. Which signals are act
 
 ### Skills — Repeatable Execution
 
-A skill is a markdown file that tells Claude how to run a specific GTM task using your context. Four skills cover most of the work:
+A skill is a markdown file that tells Claude how to run a specific GTM task using your context. Five skills cover most of the work:
+
+**Setup** — given your domain, Claude researches your company publicly — website, Crunchbase, LinkedIn, G2, job postings — and writes every context file immediately. The repo goes from blank to 70–80% complete before you answer a single question. After writing all files, it shows you what was filled and what was inferred, then offers an optional 5-question refinement pass to replace inferred fields with your actual win patterns and signals. Takes 15–30 minutes start to finish.
 
 **Account Research** — given a domain, produce a full intelligence brief: company snapshot, stakeholder map, signal score, competitive context, and a recommended angle with a specific first-line hook. This is what goes in front of the AE before any Tier 1 conversation.
 
-**Signal to Sequence** — given a signal and target segment, produce a complete campaign: trigger logic, audience definition, full sequence copy across all touches, measurement targets. Ready to load into your outbound tool. Every first touch goes through what the skill calls the PVP gate — Permissionless Value Prop. A message passes PVP if the prospect would find it valuable even if they never buy from you. Remove the CTA. If the message still has value, it passes. If it's pointless without the ask, it's a pitch — rewrite it. This single filter eliminates most of what makes outbound bad.
+**Signal to Sequence** — given a signal and target segment, produce a complete campaign: trigger logic, audience definition, full sequence copy across all touches, measurement targets. Ready to load into your outbound tool. Every first touch runs through a quality gate built into the skill: remove your CTA and ask whether the message still has value. If the prospect would find it useful regardless of whether they ever buy from you, it passes. If it's pointless without the ask, it's a pitch — rewrite it. This single filter eliminates most of what makes outbound bad.
 
 **ICP Scoring** — given an account or a list, score each one against your ICP definition and assign a tier. Runs on a single account in a minute or a batch of 500 in one session.
 
@@ -118,21 +120,19 @@ None of these are dramatic wins. That is the point. The repository compounds qui
 
 ## Building Yours
 
-We built an open-source starter kit with everything described above: the templates, four skills, three workflows, two playbooks, and a fully built-out example company (Relay, a fictional workflow automation platform) with every context file populated, real sample outputs, and a campaign with actual performance data attached.
+We built an open-source starter kit with everything described above: the templates, five skills, three workflows, two playbooks, and a fully built-out example company (Relay, a fictional workflow automation platform) with every context file populated, real sample outputs, and a campaign with actual performance data attached.
 
-Fork it. Fill in your context. Run a skill.
+Clone it. Run the setup skill. Start from a repo that already knows your company.
 
 **The order that works:**
 
-1. **CLAUDE.md first** — spend 45 minutes, no more. ICP in one sentence, top 3 signals, persona table, current priorities. The goal is a file Claude can read in two minutes and have enough to start working.
+1. **Run the setup skill first** — provide your domain and Claude researches your company, writes every context file, and marks what was inferred versus confirmed. The repo is 70–80% complete before you've answered a question. If you want to sharpen the inferred fields, the skill offers a 3-minute refinement pass after showing you the results.
 
-2. **`context/icp-definition.md` next** — be specific enough that two people would build the same list from it independently. Write the anti-ICP with the same care as the ICP.
+2. **Run the ICP Scoring skill on your current pipeline** — the gaps between what you expect and what it produces tell you where your ICP definition needs work. This is the fastest way to stress-test the context Claude just built.
 
-3. **`context/signal-library.md`** — start with 3 signals. Don't build more until you've verified these actually fire and produce results. A signal library with 3 validated signals beats one with 15 unvalidated hypotheses.
+3. **Run the Account Research skill on your top 10 accounts** — use the outputs as prep for your next conversations with those accounts. See what changes.
 
-4. **Run the ICP Scoring skill on your current pipeline** — the gaps between what you expect and what it produces tell you where your ICP definition needs work. This is the fastest way to stress-test your own thinking.
-
-5. **Run the Account Research skill on your top 10 accounts** — use the outputs as prep for your next conversations with those accounts. See what changes.
+4. **After your first few campaigns, update the signal library with results** — this is what turns it from a hypothesis document into a learning system.
 
 **What it will not do:** Write your strategy. The ICP definition template is structure, not thinking. The signal library is only as good as your knowledge of your actual win patterns. The repo amplifies what you know. It does not replace the work of knowing it.
 
@@ -179,7 +179,7 @@ Build it once. Update it when things change. Let it compound.
 What's included:
 - `CLAUDE.md` template (pre-structured, not a blank form)
 - 6 context templates: company profile, ICP definition, signal library, positioning, competitor radar, persona
-- 4 skills: Account Research, Signal to Sequence, ICP Scoring, Weekly Update
+- 5 skills: Setup (auto-populate from domain), Account Research, Signal to Sequence, ICP Scoring, Weekly Update
 - 3 workflows: Enrichment (with deliverability), Signal Routing, Campaign Build
 - 2 playbooks: New Signal Response, Competitor Switch
 - `sync/` folder with starter scripts for pulling campaign data into the repo automatically
