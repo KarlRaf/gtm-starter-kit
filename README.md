@@ -41,6 +41,7 @@ gtm-starter-kit/
 │   └── sync-signal-performance.py     ← Aggregate signal performance across campaigns
 │
 ├── skills/                             ← Claude executes these. One-line prompts.
+│   ├── setup/SKILL.md                 ← Run first. Provide domain → repo auto-populated.
 │   ├── account-research/SKILL.md      ← Deep research on any account before outreach
 │   ├── signal-to-sequence/SKILL.md    ← Turn a signal into a live outbound campaign
 │   ├── icp-scoring/SKILL.md          ← Score accounts against your ICP, assign tiers
@@ -84,78 +85,51 @@ gtm-starter-kit/
 
 ---
 
-## Getting Started in 4 Steps
+## Getting Started in 3 Steps
 
-### Step 1: Fork and clone
+### Step 1: Clone and open
 
 ```bash
-git clone https://github.com/[your-org]/gtm-starter-kit.git
+git clone https://github.com/KarlRaf/gtm-starter-kit.git
 cd gtm-starter-kit
-```
-
-Open the repo in Claude Code:
-```bash
 claude .
 ```
 
 ---
 
-### Step 2: Fill in CLAUDE.md (45 min)
+### Step 2: Run setup with your domain (15–30 min)
 
-This is the highest-leverage thing you can do. Claude reads this file first on every session.
+```
+Read skills/setup/SKILL.md and set up this repo for [your-domain.com]
+```
 
-Open `CLAUDE.md` and fill in:
-- Company overview (2–3 sentences, not a pitch)
-- ICP — one sentence plus the 3 firmographic filters you'd use to build a list
-- Anti-ICP — be explicit, this prevents wasted outreach
-- Persona table — titles, primary concern, best channel
-- Top 3 signals — name them, even if the full library isn't built yet
-- Current priorities — what you're focused on this week
+Claude researches your company — website, Crunchbase, LinkedIn, G2, job postings — and pre-fills every context file with real data. It then asks you 5 targeted questions for what it couldn't find publicly (ACV, anti-ICP, top signals, current priorities, competitive nuance). You answer, it writes the full repo.
 
-Not sure what "done" looks like? Open `examples/sample-company/CLAUDE.md` and use it as a reference.
+No blank forms. No 2-hour setup session.
+
+When it's done, you'll see a summary of what was filled automatically, what came from your answers, and the few fields that still need your review.
 
 ---
 
-### Step 3: Fill in your context files (2–3 hours)
+### Step 3: Run your first skill
 
-Work through these in order. Start with the ones that will unblock the most tasks.
-
-| File | Time | Start here if... |
-|------|------|-----------------|
-| `context/icp-definition.md` | 60 min | You want to run ICP scoring or build campaigns |
-| `context/signal-library.md` | 45 min | You want to run signal-triggered outreach |
-| `context/personas/` | 30 min each | You want personalized first touches |
-| `context/positioning.md` | 45 min | You want competitive angles in outreach |
-| `context/competitor-radar.md` | 30 min per competitor | You're in active competitive deals |
-
-For each file: open the template, open the corresponding file in `examples/sample-company/context/` side-by-side, and fill in your version. The example shows what a completed file looks like.
-
----
-
-### Step 4: Run your first skill
-
-Once CLAUDE.md and at least `context/icp-definition.md` are filled in, you're ready.
-
-**Research an account:**
 ```
 Read skills/account-research/SKILL.md and research [company.com]
 ```
 
-**Score a list of accounts:**
-```
-Read skills/icp-scoring/SKILL.md and context/icp-definition.md.
-Score these companies and output a table sorted by score, Tier 1 flagged:
-[paste company names or domains]
-```
+Your context is already there. Claude knows your ICP, your signals, your personas. The output is a full research brief — not a generic summary.
 
-**Build a campaign from a signal:**
+**Other skills to run next:**
 ```
+# Score a list against your ICP
+Read skills/icp-scoring/SKILL.md and score these companies: [paste list]
+
+# Build a campaign from a signal
 Read skills/signal-to-sequence/SKILL.md.
-Build a Tier 2 campaign for accounts that triggered the [signal name] signal.
-Target the [persona title] persona.
+Build a Tier 2 campaign for accounts triggering [signal name]. Target [persona].
 ```
 
-All outputs get saved to `outputs/` — see the naming convention below.
+All outputs land in `outputs/` — see the naming convention below.
 
 ---
 
