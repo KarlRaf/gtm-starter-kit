@@ -168,7 +168,7 @@ Build it once. Update it when things change. Let it compound.
 
 ## Get the Starter Kit
 
-**GitHub:** [add repo URL]
+**GitHub:** [github.com/KarlRaf/gtm-starter-kit](https://github.com/KarlRaf/gtm-starter-kit)
 
 What's included:
 - `CLAUDE.md` template (pre-structured, not a blank form)
