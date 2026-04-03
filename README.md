@@ -1,6 +1,6 @@
 # GTM Starter Kit
 
-Built by [The Revenue Architects](https://therevenuearchitects.com) — a GTM engineering firm based in San Francisco. We work with growth-stage B2B SaaS companies to build the signal systems, data infrastructure, and AI-powered workflows that make outbound systematic rather than manual.
+Built by [The Revenue Architects](https://therevenuearchitects.com) — a GTM engineering firm based in San Francisco. We work with growth-stage B2B SaaS companies to design and build their revenue systems: signal infrastructure, CRM architecture, data pipelines, AI-powered workflows, and the operational layer that connects them.
 
 This repo is the open-source version of what we build with clients. Clone it, fill in your context files once, and run AI-powered GTM tasks from a single prompt — no rebuilding context every session.
 
