@@ -103,11 +103,9 @@ claude .
 Read skills/setup/SKILL.md and set up this repo for [your-domain.com]
 ```
 
-Claude researches your company — website, Crunchbase, LinkedIn, G2, job postings — and pre-fills every context file with real data. It then asks you 5 targeted questions for what it couldn't find publicly (ACV, anti-ICP, top signals, current priorities, competitive nuance). You answer, it writes the full repo.
+Claude researches your company — website, Crunchbase, LinkedIn, G2, job postings — and writes every context file immediately from public data. No questions asked upfront. You see the repo populate in real time.
 
-No blank forms. No 2-hour setup session.
-
-When it's done, you'll see a summary of what was filled automatically, what came from your answers, and the few fields that still need your review.
+When it's done, it shows you what was filled and what was inferred — then offers a 3-minute refinement pass (5 questions) to replace inferred fields with your actual win patterns, ACV range, and signals. Optional. The repo works either way.
 
 ---
 

@@ -70,41 +70,13 @@ Given the domain, Claude researches:
 
 ---
 
-## Step 2: Ask 5 Questions
+## Step 2: Write All Context Files From Public Data
 
-After completing the research, present what you found and ask exactly these 5 questions. Do not ask more.
+Do not ask any questions yet. Write every context file immediately using what was found in the research. Make the best inference you can for fields that aren't publicly confirmed — mark those fields with `[inferred]` so the user knows what to verify.
 
-```
-Here's what I found about [Company]:
+The goal is a working repo the user can immediately run skills against. Speed of first value over completeness.
 
-[2–3 sentence summary of what they do and who they sell to]
-
-Funding: [round, amount, date]
-Headcount: [X, growth direction]
-Likely ICP: [what you inferred]
-Top competitors: [list]
-Likely personas: [list]
-
-Before I write the context files, I need 5 things from you:
-
-1. ACV range — what's a typical deal worth? (e.g., "$20k–$80k" or "sub-$5k self-serve to $200k enterprise")
-
-2. Anti-ICP — who explicitly wastes your time? Which company types, sizes, or situations should never enter your pipeline?
-
-3. Top 3 signals — what events or conditions tell you an account is ready to buy? These can be rough — I'll structure them properly. (e.g., "when they hire a VP of Sales," "when they raise Series B," "when they're using [competitor]")
-
-4. This week's priorities — what's the #1 thing you're focused on right now? What campaigns are active or planned?
-
-5. Competitive nuance — anything about your competitive situation that isn't visible publicly? A competitor you're seeing in most deals, or a positioning angle that's been working?
-```
-
-Wait for the answers before writing any files.
-
----
-
-## Step 3: Write All Context Files
-
-Using the research and the answers, write every context file simultaneously. Do not write placeholder text — every field should have real content or a specific, answerable question in brackets.
+Do not write placeholder text — every field should have a real value or a clearly marked inference. "Series B SaaS companies" is not an ICP — infer the actual employee range, industry, and technographic signals from the customer base you found.
 
 Write files in this order:
 
@@ -151,35 +123,79 @@ Fill with all of the above — ICP summary, top 3 signals, persona table, positi
 
 ---
 
-## Step 4: Present the Summary
+## Step 4: Present the Summary and Offer Refinement
 
-After writing all files, show a summary:
+After writing all files, show a summary — then offer the refinement pass as optional.
 
 ```
-Setup complete. Here's what was written:
+Setup complete for [Company].
 
-FILLED FROM RESEARCH:
-- context/profile.md — company overview, product, reference customers
-- context/positioning.md — value pillars, competitive summary (from public data)
+Here's what was written from public data:
+
+- CLAUDE.md — full context layer
+- context/profile.md — company overview, product, [N] reference customers
+- context/icp-definition.md — [N] tiers inferred from customer base and positioning
+- context/signal-library.md — [N] signals with detection methods
+- context/positioning.md — value pillars, messaging matrix, competitive summary
 - context/competitor-radar.md — [N] competitors with inferred win/loss patterns
 - context/personas/ — [N] personas: [titles]
-- CLAUDE.md — full context layer
 
-FILLED FROM YOUR ANSWERS:
-- context/icp-definition.md — ICP tiers, anti-ICP, evolution log
-- context/signal-library.md — [N] signals with detection methods
+Fields marked [inferred] are Claude's best guess from public data.
+They're good enough to run skills against — but may not reflect your actual win patterns.
 
-NEEDS YOUR REVIEW (flagged in files with [VERIFY]):
-- [List any specific fields that need human confirmation]
+---
 
-NEXT STEP:
-Run this to stress-test your ICP definition against your current pipeline:
+You can start using the repo right now:
 
-  Read skills/icp-scoring/SKILL.md and score [paste 10 company names]
+  Read skills/account-research/SKILL.md and research [example account from their ICP]
 
-Then run account research on your top account:
+---
 
-  Read skills/account-research/SKILL.md and research [top-account.com]
+Want to sharpen what was inferred? Answer 5 quick questions and I'll
+update every file with your actual data. Takes 3 minutes.
+
+Type "refine" to continue, or skip and start running skills.
+```
+
+If the user types "refine" (or similar confirmation), proceed to Step 5. Otherwise, stop here — the repo is ready to use.
+
+---
+
+## Step 5: Refinement Pass (Optional)
+
+Ask exactly these 5 questions in a single message. Do not split them across multiple prompts.
+
+```
+5 questions to sharpen your context:
+
+1. ACV range — what's a typical deal worth?
+   (e.g., "$20k–$80k" or "sub-$5k self-serve to $200k enterprise")
+
+2. Anti-ICP — who explicitly wastes your time?
+   Which company types, sizes, or situations should never enter your pipeline?
+
+3. Top 3 signals — what tells you an account is ready to buy?
+   Can be rough — I'll structure them. (e.g., "when they hire a VP of Sales,"
+   "when they raise Series B," "when they're evaluating [competitor]")
+
+4. This week — what's your current focus? Any active or planned campaigns?
+
+5. Competitive nuance — anything not visible publicly?
+   A competitor you're seeing in most deals, or an angle that's been working?
+```
+
+After receiving the answers, update every relevant file — replace `[inferred]` fields with confirmed data, add anti-ICP to the ICP definition, update signal library with the signals they named, update CLAUDE.md priorities. Then confirm what changed:
+
+```
+Updated with your answers:
+
+- context/icp-definition.md — anti-ICP added, Tier 1 criteria sharpened
+- context/signal-library.md — replaced inferred signals with your 3 named signals
+- CLAUDE.md — priorities updated
+- [any other files that changed]
+
+All [inferred] flags removed from updated fields.
+Remaining [inferred] fields: [list any that still need confirmation]
 ```
 
 ---
