@@ -94,7 +94,7 @@ Measure how well the account matches your ideal customer profile.
 
 Add points for active signals from `context/signal-library.md`. Reference the point values defined there.
 
-**Note:** Signal scores decay over time. A signal that fired 6+ months ago is worth 50% of its original value.
+**Note:** Signal scores decay over time. Apply the decay multipliers from `context/signal-library.md` — a signal at 91–180 days is worth 25% of its original value; at 180+ days it expires entirely.
 
 ---
 

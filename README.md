@@ -57,6 +57,8 @@ gtm-starter-kit/
 │   └── competitor-switch.md          ← Four scenarios: unknown, active eval, intent, locked in
 │
 ├── outputs/                            ← All skill outputs land here
+│   ├── scoring/                        ← ICP scoring outputs
+│   ├── campaigns/                      ← Campaign briefs and sequences
 │   └── .gitkeep
 │
 └── examples/

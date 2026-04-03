@@ -139,7 +139,7 @@ Signal scores reduce over time. Older signals are weaker signals.
 | 0–30 days | 100% |
 | 31–60 days | 75% |
 | 61–90 days | 50% |
-| 90+ days | 25% |
+| 91–180 days | 25% |
 | 180+ days | 0% (signal expires) |
 
 Run a weekly batch to recalculate scores with decay applied. Accounts that drop below tier thresholds are downgraded automatically.
