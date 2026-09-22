@@ -94,3 +94,32 @@ Common failure modes and fixes:
 | `HTTP 401 / 403` | API key invalid or expired | Regenerate key in your outbound tool |
 
 If the weekly-update skill runs without fresh sync data, it will note which numbers are stale rather than use incorrect data.
+
+---
+
+## Exit Codes
+
+| Code | Meaning |
+|------|---------|
+| 0 | All campaigns synced successfully |
+| 1 | One or more campaigns failed, or a configuration error |
+
+Use exit codes in CI or cron jobs to detect failures.
+
+---
+
+## Rate Limiting
+
+Scripts automatically retry on HTTP 429 (rate limited) and 503 (service unavailable) with exponential backoff. Up to 3 retries per request. If the API provides a `Retry-After` header, that value is used instead of the default backoff.
+
+---
+
+## Logging
+
+By default, scripts log to console. To also log to a file, set `SYNC_LOG_FILE` in `.env`:
+
+```
+SYNC_LOG_FILE=sync/sync.log
+```
+
+Log files are gitignored by default (`sync/*.log`).

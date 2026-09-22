@@ -26,7 +26,7 @@ Best,
 
 ---
 
-*Notes: Subject line A is testing 2:1 over B in open rate (52% vs. 41%). The "compare notes" CTA is outperforming "book a call" or "set up a demo" by 1.8x on reply rate. Keep through end of April.*
+*Notes: See variant results in brief.md. Subject line A leads at 52% vs. 41% open rate. CTA variant "compare notes" outperforms "book a call" by 1.8x on reply rate. Both need more volume; keep testing through end of April.*
 
 ---
 

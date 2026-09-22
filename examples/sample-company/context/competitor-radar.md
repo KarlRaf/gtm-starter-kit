@@ -128,3 +128,15 @@ If they already have Workato deployed with IT ownership, do not pursue. Migratio
 2. IT owns the evaluation and Workato is the IT default
 3. We're evaluated against a custom solution that an engineer is actively building
 4. Champion leaves the company mid-deal
+
+---
+
+## Loss Log
+
+*Record every competitive loss here. After 3+ losses to the same competitor with a similar pattern, update the Loss Patterns summary above. For the full analysis template, see `playbooks/competitor-switch.md` under "Loss Analysis."*
+
+| Date | Account | Competitor | Deal size | Primary reason | Real loss or wrong fit? | Pattern? |
+|------|---------|-----------|-----------|---------------|------------------------|----------|
+| 2024-02-20 | Acme Data | Zapier Teams | $28k | Price: evaluated us favorably but budget was capped at $15k/yr. Junior eval team chose the cheaper option. | Real loss (fit was right, budget wasn't) | Yes: price sensitivity pattern with sub-200 employee companies |
+| 2024-02-08 | Nexus AI | Workato | $92k | IT-led evaluation. CIO mandated Workato before RevOps team saw our demo. | Wrong fit: should have qualified IT involvement earlier. | Yes: Workato pattern (IT ownership = we don't compete) |
+| 2024-01-15 | DataForge | Zapier Teams | $36k | Prospect valued template library breadth over reliability. Only 80 employees, simple use case. | Wrong fit: below ICP minimum for ops complexity. | Partial: sub-100 employee accounts don't feel the reliability pain yet |

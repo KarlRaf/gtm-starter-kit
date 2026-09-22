@@ -135,6 +135,8 @@ Signal scores reduce over time. A signal from 150 days ago is not the same as on
 
 Run a weekly batch to recalculate scores with decay applied. Accounts that drop below tier thresholds are downgraded automatically. Without decay, your active list quietly fills with accounts that were relevant six months ago and aren't anymore.
 
+For the operational procedure (when to run the batch, how to handle tier changes, what not to downgrade silently), see `workflows/signal-routing.md` under "Signal Decay."
+
 ---
 
 ## Signal Performance Log

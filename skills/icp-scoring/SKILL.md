@@ -163,12 +163,66 @@ Scored by: [Claude / Name]
 
 ---
 
-## Calibration Notes
+## Calibration Guide
 
-*Update this section when you find scoring gaps — accounts that scored high but churned, or accounts that scored low but converted.*
+Scoring models drift. Thresholds that made sense when you had 20 deals may not hold after 100. Run a calibration review quarterly, or immediately if scored tiers consistently don't match outcomes.
 
-| Date | Account | Scored | Actual outcome | What the model missed |
-|------|---------|--------|---------------|----------------------|
-| | | | | |
+### When to calibrate
 
-Run a calibration review quarterly: pull the last 90 days of scored accounts and compare predicted tier to actual outcome. Adjust point values where the model is consistently wrong.
+- Quarterly (minimum)
+- After any ICP definition change
+- When win rate by tier diverges from expectations
+- When the team reports that "Tier 1 accounts don't feel like Tier 1"
+
+### Step 1: Pull scored accounts from the last 90 days
+
+Export all accounts scored in the last 90 days with:
+- Score at time of scoring
+- Tier assigned
+- Actual outcome: meeting booked (yes/no), opportunity created (yes/no), closed-won (yes/no), closed-lost reason (if applicable)
+
+If you use CRM tracking, pull from there. If scores live in `outputs/scoring/`, compile manually.
+
+### Step 2: Compare predicted tier to actual outcome
+
+Build a conversion table:
+
+| Tier | Accounts scored | Meetings booked | Meeting rate | Opps created | Opp rate | Closed-won | Win rate |
+|------|----------------|-----------------|-------------|-------------|----------|------------|----------|
+| Tier 1 (80-100) | | | | | | | |
+| Tier 2 (60-79) | | | | | | | |
+| Tier 3 (40-59) | | | | | | | |
+| Tier 4 (20-39) | | | | | | | |
+
+### Step 3: Check for calibration problems
+
+**What good calibration looks like:**
+- Tier 1 accounts convert to meetings at 2x+ the rate of Tier 2
+- Tier 2 converts at 2x+ the rate of Tier 3
+- Each tier step down shows a meaningful drop in conversion
+- Fewer than 10% of closed-won deals came from Tier 3 or below
+
+**Common problems and fixes:**
+
+| Problem | What it means | Fix |
+|---------|--------------|-----|
+| Tier 1 and Tier 2 convert at similar rates | Threshold too low: too many accounts in Tier 1 | Raise the Tier 1 threshold (e.g., 80 to 85) or tighten firmographic criteria |
+| Tier 3 accounts converting better than Tier 2 | A signal or criterion is underweighted | Check which Tier 3 accounts converted. What did they have in common? Add that as a scoring factor |
+| Most closed-won deals scored below 60 | The model is missing something | Interview the AEs: what did those accounts have that the model didn't capture? Add it |
+| Tier 1 has high meeting rate but low close rate | Scoring predicts interest but not fit | Add disqualification criteria or weight technographic fit higher |
+
+### Step 4: Adjust and re-score
+
+After identifying calibration gaps:
+1. Adjust point values in the scoring model above
+2. Document the change in the calibration log below (what changed and why)
+3. Re-score the full active account list to find newly qualified or disqualified accounts
+4. Update tier assignments in CRM
+
+### Calibration Log
+
+| Date | Change | Reason | Impact |
+|------|--------|--------|--------|
+| | | | |
+
+*Example: "2024-06-15 | Raised Tier 1 threshold from 80 to 85 | Tier 1 and Tier 2 meeting rates were within 1% of each other | 22 accounts moved from Tier 1 to Tier 2, freed up AE capacity"*

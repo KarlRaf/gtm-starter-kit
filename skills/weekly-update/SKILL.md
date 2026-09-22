@@ -34,6 +34,7 @@ Before producing any output, Claude reads:
 4. `context/competitor-radar.md` — win/loss patterns and last-updated date
 5. All files in `outputs/campaigns/` — active campaigns and their results tables
 6. Any files in `outputs/` dated in the last 14 days
+7. `outputs/scoring/` -- scored accounts and their signal dates, for decay recalculation
 
 ---
 
@@ -120,6 +121,27 @@ Do not draft a competitive update without input — competitive intel requires h
 If the evolution log hasn't been updated in 90+ days:
 - Draft a log entry template pre-filled with today's date
 - Ask: has anything changed about who you're targeting? A segment that's underperforming? A new company type showing up in pipeline?
+
+### 2f. Signal Decay Re-scoring
+
+If any accounts were scored more than 7 days ago and signals are aging past a decay threshold (30, 60, 90, or 180 days), flag them for re-scoring.
+
+**What to check:**
+- Pull scored accounts from `outputs/scoring/` or CRM export
+- For each account, check signal ages against the decay table in `context/signal-library.md`
+- Identify accounts where decay would change the tier assignment (e.g., a signal crossing from 30 to 31 days drops from 100% to 75%)
+
+**What to draft:**
+- List of accounts where the tier would change after decay is applied
+- For each: current score, decayed score, current tier, new tier, recommended action (downgrade sequence, remove from AE pipeline, move to monitor)
+
+**Ask the user:**
+- Confirm tier changes before applying
+- Flag any accounts where the decay-driven downgrade should be overridden (e.g., active conversation in progress)
+
+**Minimum cadence:** Run this check weekly as part of this skill. For teams with 100+ scored accounts, run a full batch re-score monthly using the ICP Scoring skill.
+
+See `workflows/signal-routing.md` for the full decay procedure: when to run the batch, how to handle tier changes, and what not to downgrade silently.
 
 ---
 

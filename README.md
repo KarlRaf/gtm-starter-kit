@@ -156,13 +156,19 @@ Read skills/weekly-update/SKILL.md and run the weekly context update.
 
 Claude reads the repo, identifies what's stale, drafts every section that changed, and asks you to fill in the parts it can't know. 10 minutes instead of 45.
 
-Manual cadence for the rest:
+Refresh cadence for the rest:
 
-| Cadence | What to update |
-|---------|---------------|
-| Weekly | Run `/weekly-update` skill |
-| After every win/loss | Update `context/competitor-radar.md` win/loss patterns |
-| Quarterly | Review `context/icp-definition.md` — add an entry to the ICP evolution log |
+| File | Cadence | Trigger |
+|------|---------|---------|
+| `CLAUDE.md` priorities | Weekly | Run the weekly-update skill every Monday morning |
+| Signal performance log | Every 14 days (minimum) | After each campaign review; more often when campaigns are active |
+| `context/competitor-radar.md` | Monthly routine + within 48h of any competitive win or loss | Don't wait for the monthly review after a competitive loss |
+| `context/icp-definition.md` | Quarterly | Add an entry to the ICP evolution log; re-score the account list after any change |
+| `context/profile.md` | Quarterly | Update after funding rounds, product launches, GTM team changes |
+| `context/personas/` | Semi-annually | Review after 3+ similar objections from the same persona suggest the profile is stale |
+| `context/signal-library.md` | Ongoing (performance) + quarterly (structural) | Performance log updates are continuous; add or retire signals quarterly based on data |
+| `context/positioning.md` | Semi-annually + after major competitive shift | Positioning should be stable; update when the market changes, not on a whim |
+| Signal decay re-scoring | Weekly | Run as part of weekly-update; flag accounts where aging signals changed the tier |
 
 ---
 

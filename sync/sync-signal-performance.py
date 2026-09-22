@@ -11,14 +11,32 @@ Usage:
     python3 sync/sync-signal-performance.py
 
 Requirements:
-    pip install python-dotenv
+    pip install -r sync/requirements.txt
 """
 
 import json
 import os
+import sys
+import logging
 from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
+
+# --- Logging ------------------------------------------------------------------
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+log = logging.getLogger("sync-signal-performance")
+
+LOG_FILE = os.getenv("SYNC_LOG_FILE")
+if LOG_FILE:
+    fh = logging.FileHandler(LOG_FILE)
+    fh.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+    log.addHandler(fh)
+
+# --- Configuration -----------------------------------------------------------
 
 CAMPAIGNS_DIR = Path("outputs/campaigns")
 OUTPUT_PATH = Path("context/signal-performance-sync.json")
@@ -48,9 +66,10 @@ def aggregate():
     signal_data = defaultdict(lambda: {"sends": 0, "replies": 0, "meetings": 0, "campaigns": []})
 
     if not CAMPAIGNS_DIR.exists():
-        print(f"No campaigns directory at {CAMPAIGNS_DIR}")
-        return
+        log.error(f"No campaigns directory at {CAMPAIGNS_DIR}")
+        sys.exit(1)
 
+    errors = 0
     synced_count = 0
     for campaign_dir in CAMPAIGNS_DIR.iterdir():
         if not campaign_dir.is_dir():
@@ -71,14 +90,18 @@ def aggregate():
             signal_data[signal]["campaigns"].append(campaign_dir.name)
             synced_count += 1
 
+        except json.JSONDecodeError as e:
+            log.error(f"  Invalid JSON in {sync_file}: {e}")
+            log.error(f"  Fix: delete {sync_file} and re-run sync-campaign-results.py")
+            errors += 1
         except Exception as e:
-            print(f"  Error reading {sync_file}: {e}")
+            log.error(f"  Error reading {sync_file}: {e}")
+            errors += 1
 
     if synced_count == 0:
-        print("No results-sync.json files found. Run sync-campaign-results.py first.")
-        return
+        log.error("No results-sync.json files found. Run sync-campaign-results.py first.")
+        sys.exit(1)
 
-    # Build output
     output = {
         "synced_at": datetime.utcnow().isoformat(),
         "signals": {}
@@ -100,15 +123,19 @@ def aggregate():
     with open(OUTPUT_PATH, "w") as f:
         json.dump(output, f, indent=2)
 
-    print(f"Signal performance summary written to {OUTPUT_PATH}")
-    print(f"\nSummary ({synced_count} campaign(s) aggregated):\n")
+    log.info(f"Signal performance summary written to {OUTPUT_PATH}")
+    log.info(f"\nSummary ({synced_count} campaign(s) aggregated):\n")
 
     for signal, stats in output["signals"].items():
-        print(f"  {signal}")
-        print(f"    Sends: {stats['sends_90d']} | Reply rate: {stats['reply_rate']:.1%} | "
-              f"Meeting rate: {stats['meeting_rate']:.1%}")
+        log.info(f"  {signal}")
+        log.info(f"    Sends: {stats['sends_90d']} | Reply rate: {stats['reply_rate']:.1%} | "
+                  f"Meeting rate: {stats['meeting_rate']:.1%}")
 
-    print("\nRun the weekly-update skill to incorporate these into the signal performance log.")
+    if errors > 0:
+        log.error(f"\n{errors} file(s) had errors. See above.")
+        sys.exit(1)
+    else:
+        log.info("\nRun the weekly-update skill to incorporate these into the signal performance log.")
 
 
 if __name__ == "__main__":

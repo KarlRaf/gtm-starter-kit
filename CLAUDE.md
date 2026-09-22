@@ -101,6 +101,21 @@ Outbound: [Outreach / Smartlead] | Call intel: [Gong / Fathom] | Intent: [G2 / 6
 
 ---
 
+## Context Freshness
+
+Each context file has a `Last updated` date at the top. If a file hasn't been updated within its expected cadence, flag it at the start of the session before running any task.
+
+| File | Expected freshness |
+|------|-------------------|
+| This file (CLAUDE.md) | Updated within the last 7 days |
+| `context/signal-library.md` performance log | Updated within 14 days (if campaigns are active) |
+| `context/competitor-radar.md` | Updated within 60 days |
+| `context/icp-definition.md` | Updated within 90 days |
+| `context/profile.md` | Updated within 90 days |
+| `context/personas/` | Updated within 180 days |
+
+---
+
 ## Quick Commands
 
 ```
