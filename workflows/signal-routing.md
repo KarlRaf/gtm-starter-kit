@@ -143,3 +143,26 @@ Signal scores reduce over time. Older signals are weaker signals.
 | 180+ days | 0% (signal expires) |
 
 Run a weekly batch to recalculate scores with decay applied. Accounts that drop below tier thresholds are downgraded automatically.
+
+### How to run the weekly decay batch
+
+**Manual (with Claude Code):**
+```
+Read skills/icp-scoring/SKILL.md. Re-score these accounts with current signal
+dates. Apply the decay multipliers. Flag any that changed tiers since last score.
+[paste account list or reference outputs/scoring/]
+```
+
+**Automated (with sync scripts):**
+If your scored accounts are tracked in CRM, export the list with signal dates and last-scored dates. Re-run the ICP Scoring skill in batch mode. Compare old vs. new tiers.
+
+### What to do with tier changes
+
+| Change | Action |
+|--------|--------|
+| Tier 1 to Tier 2 | Remove from AE pipeline. Move to SDR sequence. |
+| Tier 2 to Tier 3 | Move to automated sequence. |
+| Tier 3 to Tier 4 or Exclude | Remove from active sequences. Monitor only. |
+| Any tier to a higher tier (new signal fired) | Upgrade immediately. Follow new-signal-response playbook. |
+
+**What not to do:** Don't silently downgrade accounts mid-conversation. If an AE has an active thread with a contact, flag the decay but don't change the routing until the AE confirms.

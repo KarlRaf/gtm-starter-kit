@@ -243,11 +243,44 @@ Define success before launch. Set targets by tier:
 
 ---
 
+## Step 6: Variant Tracking (10 min)
+
+If you're testing different versions of any element (subject line, body copy, CTA, send time), document the variants before launch. Without structured tracking, you'll know something worked better but not why.
+
+### Variant Tracking Table
+
+Add this to `brief.md` for every campaign that runs variants:
+
+```markdown
+## Variants
+
+| Variant | Element tested | Version A | Version B | Split |
+|---------|---------------|-----------|-----------|-------|
+| V1 | Subject line | "[Company]'s RevOps stack" | "First 90 days" | 50/50 |
+| V2 | CTA | "Worth 20 min to compare notes?" | "Want to see how [Reference] handled it?" | 50/50 |
+
+### Variant Results (updated weekly)
+
+| Variant | Metric | Version A | Version B | Winner | Confidence | Decision |
+|---------|--------|-----------|-----------|--------|------------|----------|
+| V1 | Open rate | 52% (n=36) | 41% (n=35) | A | Medium (n < 50/arm) | Continue A, retest at n=100 |
+| V2 | Reply rate | 5.6% (n=36) | 3.4% (n=35) | A | Low | Keep testing |
+```
+
+**Rules for variant testing:**
+- Test one element at a time. Testing subject line AND body copy simultaneously means you can't attribute the difference.
+- Minimum sample size per variant: 50 sends before declaring a winner. Below 50, the result is noise.
+- "Winner" means >=30% relative improvement with at least 50 sends per arm. A 10% difference at n=40 is not a winner; it's a signal to keep testing.
+- Document the decision: keep winner, keep testing, or retire both and try something new.
+- After declaring a winner, update the sequence to use only the winning version. Don't let both run indefinitely.
+
+---
+
 ## Output Structure
 
 ```
 outputs/campaigns/[date]-[campaign-name]/
-├── brief.md          ← Trigger logic, segments, objectives
+├── brief.md          ← Trigger logic, segments, objectives, variant tracking
 ├── sequences/
 │   ├── tier1.md      ← Full sequence copy, Tier 1
 │   ├── tier2.md      ← Full sequence copy, Tier 2

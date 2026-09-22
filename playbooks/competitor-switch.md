@@ -111,12 +111,62 @@ for our positioning. No pitch. No meeting ask.
 
 ---
 
-## Competitive Intelligence — Keep the Battlecards Current
+## Competitive Intelligence -- Keep the Battlecards Current
 
-After every competitive win or loss, update `context/competitor-radar.md`:
+After every competitive win or loss, update `context/competitor-radar.md`.
 
-- **Win:** What was the deciding factor? What did the champion say closed it?
-- **Loss:** What did [Competitor] offer that we couldn't match? Was it price, features, relationships, or timing?
-- **Pattern:** After 5+ wins/losses against the same competitor, summarize the pattern
+### After a win
+
+Quick capture (5 min). Add to the "Win Patterns" section of the relevant battlecard:
+- What was the deciding factor?
+- What did the champion say closed it?
+- Was there a specific proof point, demo moment, or reference that tipped the decision?
+
+### After a loss -- Loss Analysis
+
+Losses are more valuable than wins for improving your GTM. Capture this within 48 hours, while the details are fresh. Add to the "Loss Patterns" section of the relevant battlecard AND log the full analysis below.
+
+#### Loss Analysis Template
+
+```markdown
+# Loss Analysis: [Company Name] vs. [Competitor]
+Date: [YYYY-MM-DD]
+Deal size: [$X]
+Sales cycle length: [X days]
+Primary contact: [Name, Title]
+AE: [Name]
+
+## 1. What the prospect valued most
+[Rank their top 3 evaluation criteria in order of importance.
+What did they say mattered? Not what we assumed, what they told us.]
+
+## 2. What the competitor offered that we couldn't match
+[Be specific. "Better price" is not enough. "30% lower at the same tier
+because they bundle X and Y" is useful.]
+
+## 3. What would have changed the outcome
+[If you could go back, what would you do differently? A different demo flow?
+Earlier executive involvement? A different proof point? Be honest.]
+
+## 4. Was this a real loss or wrong fit?
+[Not every loss is a competitive failure. Some accounts were never our ICP.
+If the account was wrong-fit, note why it got this far and what filter
+would have caught it earlier.]
+
+## 5. Pattern check
+[Does this loss match a pattern you've seen before? If this is the 3rd time
+you've lost to this competitor for the same reason, that's a systemic issue,
+not a one-off.]
+```
+
+#### When to escalate to a pattern update
+
+After 3+ similar losses against the same competitor:
+- Summarize the pattern in `context/competitor-radar.md` under "Loss Patterns"
+- Review whether the ICP definition should exclude this segment
+- Decide: is this a product gap (roadmap conversation), a positioning gap (messaging fix), or a fit gap (ICP update)?
+
+After 5+ similar losses:
+- This is a systemic issue. Present to the team with data: which accounts, what they valued, what we couldn't match, and a recommendation for whether to compete in this segment at all.
 
 The battlecards are only useful if they reflect current reality. A battlecard based on 2022 deals is misleading in 2025.

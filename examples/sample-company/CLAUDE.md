@@ -122,7 +122,7 @@ Full library: `context/signal-library.md`
 
 - [ ] Build Series B signal campaign for Q2 (400 accounts identified, enrichment 60% complete)
 - [ ] Rebuild Zapier competitive campaign — current reply rate is 1.2%, target is 4%
-- [ ] Implement signal decay scoring — accounts from 2023 are inflating our active list
+- [ ] Run first decay re-score batch -- use weekly-update skill to flag 2023 accounts for tier downgrade
 
 ---
 

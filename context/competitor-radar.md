@@ -100,3 +100,13 @@ When Claude builds outreach or handles a competitive scenario, it references thi
 
 **vs. [Competitor A]:** [Pattern — e.g., "We lose when price is the primary criterion and the eval team is junior"]
 **vs. [Competitor B]:** [Pattern]
+
+---
+
+## Loss Log
+
+*Record every competitive loss here. After 3+ losses to the same competitor with a similar pattern, update the Loss Patterns summary above. For the full analysis template, see `playbooks/competitor-switch.md` under "Loss Analysis."*
+
+| Date | Account | Competitor | Deal size | Primary reason | Real loss or wrong fit? | Pattern? |
+|------|---------|-----------|-----------|---------------|------------------------|----------|
+| | | | | | | |

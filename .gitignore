@@ -26,3 +26,6 @@ outputs/raw/
 # Sync script live data outputs (contain metrics, not committed)
 outputs/campaigns/**/results-sync.json
 context/signal-performance-sync.json
+
+# Sync script logs
+sync/*.log

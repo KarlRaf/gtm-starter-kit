@@ -63,3 +63,19 @@ Tier 2 = email + LinkedIn. No phone for this segment.
 | Mar 18 | 71 (+13) | 11 | 4 | $112k |
 
 *Reply rate through week 2: 8.6%. Meeting rate: 3.4%. Above target on both. Continue.*
+
+---
+
+## Variants
+
+| Variant | Element tested | Version A | Version B | Split |
+|---------|---------------|-----------|-----------|-------|
+| V1 | Subject line | "{{Company}}'s RevOps stack" | "First 90 days" | 50/50 |
+| V2 | CTA | "compare notes" | "book a call" | 50/50 |
+
+### Variant Results (updated weekly)
+
+| Variant | Metric | Version A | Version B | Winner | Confidence | Decision |
+|---------|--------|-----------|-----------|--------|------------|----------|
+| V1 | Open rate | 52% (n=36) | 41% (n=35) | A | Medium (n < 50/arm) | Keep A, retest at n=100 |
+| V2 | Reply rate | 8.6% (n=36) | 4.8% (n=35) | A (1.8x) | Medium | Keep "compare notes" CTA |
