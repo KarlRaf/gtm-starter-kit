@@ -16,15 +16,21 @@ What stays out: one-off backfills, tests, a single enrichment run. Do those with
 
 ## Setup
 
-1. Install the CLI and sign in:
+1. Install the CLI and the [Cargo skills](https://github.com/getcargohq/cargo-skills), so Claude knows the CLI and the project commands. Easiest is to paste this into Claude Code:
+
+```
+Install Cargo by following every step in https://api.getcargo.io/agent-install.txt
+```
+
+Or by hand:
 
 ```bash
 npm install -g @cargo-ai/cli
 cargo-ai login
-cargo-ai whoami        # confirm the workspace before any write
+npx skills add getcargohq/cargo-skills --all
 ```
 
-2. Copy the Cargo skills from [getcargohq/cargo-skills](https://github.com/getcargohq/cargo-skills) into `.claude/skills/`. Claude then knows the CLI and the project commands.
+2. Run `cargo-ai whoami` and confirm it is the workspace you mean, before any write.
 
 3. Ask Claude:
 
@@ -32,7 +38,7 @@ cargo-ai whoami        # confirm the workspace before any write
 Set up cargo/ as a Cargo project and pull my live workspace into it.
 ```
 
-That runs `cargo-ai project pull`, which writes one file per live resource and adopts it, so the next deploy changes nothing.
+Claude scaffolds the project and runs `cargo-ai project pull`, which writes one file per live resource and adopts it, so the next deploy changes nothing.
 
 4. Commit everything, including `cargo.state.json`.
 
