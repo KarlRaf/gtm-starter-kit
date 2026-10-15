@@ -29,3 +29,8 @@ context/signal-performance-sync.json
 
 # Sync script logs
 sync/*.log
+
+# Cargo project (cargo.state.json IS committed)
+cargo/node_modules/
+cargo/cargo.state.bak.json
+cargo/cargo.state.lock
