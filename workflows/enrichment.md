@@ -41,6 +41,7 @@ For accounts that pass Tier 1 screening (ICP score ≥ 40), run through Clay in 
 - Input: domain
 - Required output fields: company size, industry, funding stage, last funding date, tech stack, key contacts (name, title, email, LinkedIn URL)
 - Quality gate: flag accounts where email confidence < 80%
+- Document the table in `clay/` (template in `clay/README.md`)
 
 ---
 

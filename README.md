@@ -40,6 +40,12 @@ gtm-starter-kit/
 │   ├── sync-campaign-results.py        ← Pull reply/meeting rates from outbound tool
 │   └── sync-signal-performance.py     ← Aggregate signal performance across campaigns
 │
+├── cargo/                              ← Your Cargo workspace as code: plays, models, tools
+│   └── README.md                       ← What goes in, setup, rules that prevent drift
+│
+├── clay/                               ← One file per Clay table: input, waterfall, prompts, cost
+│   └── README.md                       ← The table template
+│
 ├── skills/                             ← Claude executes these. One-line prompts.
 │   ├── setup/SKILL.md                 ← Run first. Provide domain → repo auto-populated.
 │   ├── account-research/SKILL.md      ← Deep research on any account before outreach
